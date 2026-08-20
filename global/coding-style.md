@@ -97,6 +97,30 @@ Avoid over-generalization. Do not build a framework for one case or force unrela
 - Do not move all controller logic into one equally broad service.
 - Prefer centralized exception/error handling over repeated controller `try/catch` blocks.
 
+## Kotlin and Android
+
+- Keep composables and views focused on rendering, semantics and input
+  delegation. Put data loading, parsing and business rules in the
+  view-model/repository/client layers.
+- Declare UI state from a single hoisted source. Prefer unidirectional state
+  flow (state down, events up); avoid mutating shared globals from inside
+  composables.
+- Use a single real `OkHttpClient` (or equivalent) and reuse it. Register
+  interceptors once and document that a second registration replaces the
+  first.
+- Keep endpoint URLs, headers, timeouts and other integration constants in one
+  centralized configuration object. Do not reinvent them across screens.
+- Prefer Kotlin `result`/`sealed` types and explicit failure handling over bare
+  exceptions or hidden nulls where a rule or result needs to be surfaced.
+- Keep suspend functions on the `Dispatchers` appropriate to their work; do not
+  block the main thread with network or disk I/O.
+- Guard against async response races and cancelled scopes when UI state can
+  change or the composable leaves composition.
+- Keep user-visible strings in a localization source, not inline. Accessibility
+  labels are content and belong beside the interactive element they describe.
+- Preserve existing `applicationId`/namespace mismatch and platform-version
+  choices unless the task explicitly changes them.
+
 ## JavaScript and React
 
 - Prefer functional components when consistent with the project.

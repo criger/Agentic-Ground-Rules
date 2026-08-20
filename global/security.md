@@ -14,6 +14,23 @@ Never expose or commit:
 
 Use configuration names and examples without real values.
 
+### Signing and publish credentials
+
+Release signing keys, store passwords, company keystores and store-publishing
+credentials (Google Play, Apple App Store and similar) form a special secret
+class that often lives in local, git-ignored files or CI secrets instead of a
+server. They matter differently from ordinary credentials:
+
+- A lost or corrupted signing key can permanently block updates to an already
+  published client app or desktop package. Treat it as a backup-critical asset,
+  not a rotatable password.
+- Never commit keystores, signing certificates, `keystore.properties` or their
+  equivalent local credential files.
+- Keep store passwords and signing keys out of source, build logs, test output
+  and generated artifacts.
+- Document where release credentials are stored and who can recover them, with
+  example variable names and no real values.
+
 ## User and business data
 
 - Minimize access to personal, financial and confidential data.

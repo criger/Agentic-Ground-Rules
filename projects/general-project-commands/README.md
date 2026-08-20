@@ -61,6 +61,7 @@ See `optional-files.md` before adding another document type.
 | --- | --- |
 | One small repository | short README, status and pitfalls may be enough |
 | Frontend and backend | repository ownership, API contracts and separate deploy flows |
+| Native mobile app | package/signing release flow, platform SDK versions, accessibility and privacy as product constraints, single source for network/config |
 | Library and consumer | public API, peer dependencies and testing in a real consumer |
 | Monorepo or project family | shared root context with nested context for genuine differences |
 | Learning/content project | sources, factual baseline, originality and practical verification |
