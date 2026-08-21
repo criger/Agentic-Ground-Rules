@@ -110,7 +110,7 @@ Avoid over-generalization. Do not build a framework for one case or force unrela
   first.
 - Keep endpoint URLs, headers, timeouts and other integration constants in one
   centralized configuration object. Do not reinvent them across screens.
-- Prefer Kotlin `result`/`sealed` types and explicit failure handling over bare
+- Prefer Kotlin `Result` or `sealed` result types and explicit failure handling over bare
   exceptions or hidden nulls where a rule or result needs to be surfaced.
 - Keep suspend functions on the `Dispatchers` appropriate to their work; do not
   block the main thread with network or disk I/O.
