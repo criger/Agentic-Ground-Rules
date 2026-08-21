@@ -12,7 +12,8 @@ They apply to every project unless a project file explicitly explains how the ru
 4. `architecture.md`
 5. `coding-style.md`
 6. `security.md`
-7. `git-workflow.md`
+7. `native-mobile.md`
+8. `git-workflow.md`
 
 ## Mental model
 
