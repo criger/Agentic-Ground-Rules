@@ -106,8 +106,8 @@ Avoid over-generalization. Do not build a framework for one case or force unrela
   flow (state down, events up); avoid mutating shared globals from inside
   composables.
 - Use a single real `OkHttpClient` (or equivalent) and reuse it. Register
-  interceptors once and document that a second registration replaces the
-  first.
+  interceptors once, avoid double registration across modules/build variants,
+  and document interceptor order.
 - Keep endpoint URLs, headers, timeouts and other integration constants in one
   centralized configuration object. Do not reinvent them across screens.
 - Prefer Kotlin `Result` or `sealed` result types and explicit failure handling over bare
