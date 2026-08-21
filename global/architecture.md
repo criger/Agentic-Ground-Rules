@@ -182,36 +182,8 @@ Hooks are not a new dumping ground. A very large controller hook may need separa
 
 ## Native mobile (Android and iOS)
 
-Native mobile apps add packaging, lifecycle, platform SDK and accessibility
-constraints that differ from a web frontend. The same responsibility
-boundaries apply, but the framework vocabulary changes.
-
-| Architectural role | Android (Jetpack Compose) | iOS (SwiftUI) |
-| --- | --- | --- |
-| View | `Composable` functions; `Screen`/`Modal` state and rendering | `View` structs and `ViewModifier` helpers |
-| Controller / coordinator | `ViewModel` (StateFlow/state hoisting), navigation or screen coordinator | `@Observable`/`ObservableObject` view-model or coordinator |
-| Model | domain objects and sealed-state types | `struct`/`enum` value types and result models |
-| Service / use case | repository-facing use cases and feature workflows | use cases and application services |
-| Repository / client | data-source wrappers for remote API and local storage | data-source protocols and client services |
-| Persistence | Room/DataStore and DAOs behind a repository | SwiftData/CoreData or a repository protocol |
-| Integration / mapper | OkHttp/Retrofit clients, JSON mappers | URLSession client, `Codable` mapping |
-| Config | centralized constants and typed config objects | typed config/environment values |
-
-Mobile-specific rules:
-
-- Keep state and logic out of composable/view bodies. Hoist state into a
-  view-model and let the platform bind it; a screen that calls APIs, maps data
-  and owns domain state is a god screen.
-- Treat the platform SDK version split (`minSdk`/`targetSdk`, iOS deployment
-  target) as a contract that affects the installed base. Do not bump it
-  casually.
-- Keep external services (network clients, location, storage) behind one
-  authoritative source. Do not duplicate endpoint URLs, headers or credentials
-  across screens.
-- User-visible strings belong in a central localization source, not inline.
-  Accessibility labels and semantics are content, not styling.
-- Preserve the app's privacy and accessibility posture. These are product
-  constraints a refactor must not silently remove.
+See `native-mobile.md` for architecture vocabulary, mobile-specific rules, and
+release/signing considerations for Android (Jetpack Compose) and iOS (SwiftUI).
 
 ## Large classes and god objects
 
