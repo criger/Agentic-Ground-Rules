@@ -14,6 +14,11 @@ Never expose or commit:
 
 Use configuration names and examples without real values.
 
+### Signing and publishing credentials
+
+See `native-mobile.md` for release/signing considerations for native mobile
+apps (Android keystores, iOS provisioning profiles, App Store credentials).
+
 ## User and business data
 
 - Minimize access to personal, financial and confidential data.
