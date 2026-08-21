@@ -14,7 +14,7 @@ Never expose or commit:
 
 Use configuration names and examples without real values.
 
-### Signing and publish credentials
+### Signing and publishing credentials
 
 Release signing keys, store passwords, company keystores and store-publishing
 credentials (Google Play, Apple App Store and similar) form a special secret
