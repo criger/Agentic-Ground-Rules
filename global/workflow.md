@@ -46,8 +46,10 @@ Use `projects/general-project-commands/` as a flexible template. Do not create e
 4. Check whether the change would make a class, component, hook or module too broad.
 5. Reuse existing semantic rules without creating an artificial abstraction.
 6. Assess production, data, security and compatibility impact.
-7. Establish a relevant build and test baseline when possible.
-8. Prefer the smallest complete change with clear responsibility boundaries.
+7. If a dependency may change, follow `dependencies.md` before selecting or installing it.
+8. Define realistic acceptance and regression scenarios using `testing.md`.
+9. Establish a relevant build and test baseline when possible.
+10. Prefer the smallest complete change with clear responsibility boundaries.
 
 For new functionality, make ownership explicit:
 
@@ -72,8 +74,9 @@ Before considering work complete:
 3. Confirm that new files have clear names and live in the correct area.
 4. Confirm that interfaces and implementations point in the intended direction.
 5. Confirm that helper folders did not become a dumping ground.
-6. Run checks for each affected layer and build the affected deliverable.
-7. Update project architecture documentation when a lasting boundary changed.
+6. Review manifest, lockfile, transitive, compatibility and security effects when dependencies changed.
+7. Run realistic checks for each affected layer and build the affected deliverable.
+8. Update project architecture documentation when a lasting boundary changed.
 
 ## Debugging sequence
 

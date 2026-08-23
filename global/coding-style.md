@@ -7,7 +7,7 @@
 - Follow DRY and give shared semantics one natural home.
 - Use names that describe role and domain intent.
 - Preserve established formatting and idioms when they do not violate documented architecture or safety constraints.
-- Avoid new dependencies unless they clearly solve the problem.
+- Avoid new dependencies unless they clearly solve the problem. Follow `dependencies.md` for every addition, removal or version change.
 - Keep changes focused and easy to review.
 - Optimize for the next developer who must understand and debug the code without knowing its history.
 
@@ -150,15 +150,9 @@ A hook also needs one responsibility. Moving a god component into one god hook d
 - Use absolute positioning only when the design genuinely requires it.
 - Keep generated document/PDF layouts deterministic.
 
-## Testing by layer
+## Testing
 
-| Layer | Focus |
-| --- | --- |
-| Domain/services | rules, edge cases and failure behaviour |
-| Repositories/data | queries, mapping and persistence integration |
-| Controllers/API | contracts, validation, status codes and authorization |
-| Views/components | rendering and user interaction |
-| Integrations | transport mapping, failures, retry and fallback |
+Follow `testing.md`. Test observable behaviour and realistic contracts at the appropriate levels instead of mirroring implementation details.
 
 A refactoring that splits a god object should preserve behaviour with existing tests and targeted tests around the newly created boundaries.
 

@@ -51,6 +51,7 @@ Inspect at least:
 ```text
 README and existing agent/contribution instructions
 package and build files
+dependency manifests, lockfiles, configured registries and security tooling
 entrypoints and routes
 configuration and environment variable names
 authentication and authorization boundaries
@@ -88,6 +89,8 @@ Identify:
 - authentication, session and ownership boundaries
 - build, release and deployment flow
 - observability, error handling and rollback
+- runtime, framework and package compatibility constraints
+- approved registries, dependency ownership and version policy
 
 Look for implicit contracts that appear cosmetic: CSS import order, relative base paths, peer dependencies, cookie credentials or fixed storage keys.
 
@@ -102,6 +105,7 @@ Document only project-specific concerns:
 - payment or transactional rules
 - configuration that must not reach the client or repository
 - deletion, migration and cleanup risk
+- direct and transitive dependency risk, provenance and license constraints
 
 If the implementation was not inspected, write `not verified`.
 
@@ -119,6 +123,10 @@ manual verification
 deployment
 cleanup or rollback
 ```
+
+For testing, identify which realistic user and system scenarios are covered at unit, integration, contract, component and end-to-end level. Record important gaps instead of treating the existence of test files or a coverage percentage as proof.
+
+For dependencies, identify the approved package sources, audit/scanning commands, supported runtime matrix and who must approve uncertain packages or versions.
 
 Keep these statements distinct:
 
