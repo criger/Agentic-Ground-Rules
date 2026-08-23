@@ -89,6 +89,7 @@ Avoid over-generalization. Do not build a framework for one case or force unrela
 ## Java and C#
 
 - Keep controllers thin.
+- Give REST controllers a separate, documented and verifiable API contract as defined in `architecture.md`.
 - Put business logic in services/use cases.
 - Keep persistence in repositories/data access.
 - Place interfaces at meaningful boundaries.

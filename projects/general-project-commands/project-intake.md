@@ -83,6 +83,7 @@ Identify:
 - runtime components and responsibilities
 - data flow and ownership
 - API, event and file contracts
+- the authoritative REST/API contract source and how implementation drift is detected
 - state and persistence
 - external integrations and data sources
 - caching, polling, retry and idempotency

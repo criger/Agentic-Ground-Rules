@@ -45,6 +45,8 @@ Fast unit tests and realistic integration tests solve different problems. Neithe
 
 Use fakes or mocks to isolate a unit or an external system that cannot safely participate in the test. Do not use them to avoid testing the database mapping, framework configuration, serialization or other integration that the change actually depends on.
 
+For REST APIs, contract tests must verify that the implementation and generated API description agree on routes, inputs, status codes, response schemas and important error behaviour. A documented interface that is not checked against the running framework can drift and is not sufficient evidence by itself.
+
 ## Regression tests
 
 For a defect:
