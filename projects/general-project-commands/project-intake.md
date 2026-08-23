@@ -59,6 +59,7 @@ API clients or public interfaces
 database and migration sources
 deployment workflows
 test and lint configuration
+formatter, editor and style enforcement configuration
 ```
 
 Record exact paths. Do not call a file important merely because its name looks plausible.
