@@ -11,6 +11,7 @@ Do not create every file in this list by default.
 | `api.md` | API, event or component contracts are central | authentication, shapes, errors, polling, compatibility |
 | `deployment.md` | deployment is multi-step, risky or different per repository | environments, branch rules, migrations, rollback |
 | `testing.md` | the project has a substantial test strategy or manual matrix | commands, fixtures, roles, devices, E2E scenarios |
+| `dependencies.md` | dependency approval, private registries or compatibility rules need project-specific detail | approved sources, runtime matrix, audits, exceptions, upgrade policy |
 | `decisions.md` | lasting choices need rationale | date, options, consequences, revisit criteria |
 | `data-model.md` | ownership and relationships are complex | schema source, entities, relationships, migrations |
 | `security.md` | the project has material rules beyond `global/security.md` | trust boundaries, roles, ownership, abuse cases |

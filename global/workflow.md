@@ -43,11 +43,14 @@ Use `projects/general-project-commands/` as a flexible template. Do not create e
 1. Identify the exact behaviour and owning architectural layer.
 2. Find existing services, interfaces, repositories, clients, validators or components that already own part of the responsibility.
 3. Confirm how the change follows the project's MVC structure and dependency direction.
-4. Check whether the change would make a class, component, hook or module too broad.
-5. Reuse existing semantic rules without creating an artificial abstraction.
-6. Assess production, data, security and compatibility impact.
-7. Establish a relevant build and test baseline when possible.
-8. Prefer the smallest complete change with clear responsibility boundaries.
+4. Identify the authoritative API contract when public endpoints are affected.
+5. Check whether the change would make a class, component, hook or module too broad.
+6. Reuse existing semantic rules without creating an artificial abstraction.
+7. Assess production, data, security and compatibility impact.
+8. If a dependency may change, follow `dependencies.md` before selecting or installing it.
+9. Define realistic acceptance and regression scenarios using `testing.md`.
+10. Establish a relevant build and test baseline when possible.
+11. Prefer the smallest complete change with clear responsibility boundaries.
 
 For new functionality, make ownership explicit:
 
@@ -71,9 +74,11 @@ Before considering work complete:
 2. Confirm that one rule was not implemented differently in several places.
 3. Confirm that new files have clear names and live in the correct area.
 4. Confirm that interfaces and implementations point in the intended direction.
-5. Confirm that helper folders did not become a dumping ground.
-6. Run checks for each affected layer and build the affected deliverable.
-7. Update project architecture documentation when a lasting boundary changed.
+5. Confirm that API contracts, controller implementations and generated documentation agree.
+6. Confirm that helper folders did not become a dumping ground.
+7. Review manifest, lockfile, transitive, compatibility and security effects when dependencies changed.
+8. Run realistic checks for each affected layer and build the affected deliverable.
+9. Update project architecture documentation when a lasting boundary changed.
 
 ## Debugging sequence
 
