@@ -252,6 +252,11 @@ A large component that renders UI, calls APIs, maps data, enforces business rule
 
 Hooks are not a new dumping ground. A very large controller hook may need separate orchestration, data and domain responsibilities.
 
+## Native mobile (Android and iOS)
+
+See `native-mobile.md` for architecture vocabulary, mobile-specific rules, and
+release/signing considerations for Android (Jetpack Compose) and iOS (SwiftUI).
+
 ## Large classes and god objects
 
 Treat size as an architectural signal when:

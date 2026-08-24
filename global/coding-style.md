@@ -158,6 +158,13 @@ Avoid over-generalization. Do not build a framework for one case or force unrela
 - Do not move all controller logic into one equally broad service.
 - Prefer centralized exception/error handling over repeated controller `try/catch` blocks.
 
+## Native mobile (Kotlin/Android and Swift/iOS)
+
+See `native-mobile.md` for mobile-specific coding rules including state hoisting,
+single OkHttpClient/URLSession, centralized endpoints, result types,
+coroutine/dispatcher usage, async race guards, localization, and SDK version
+preservation.
+
 ## JavaScript and React
 
 - Prefer functional components when consistent with the project.

@@ -23,3 +23,9 @@ All `example-*` projects are fictional. Their repository names, commits, users a
 6. Keep global rules in `global/`; do not copy them into the project.
 
 A small project may need four files. A production platform may need ten. Document risk and complexity, not symmetry.
+
+Native or packaged apps (Android, iOS, desktop) share the same real-project
+workflow above. Start from `general-project-commands/` and add the shape-specific
+responsibilities from its "Adapt to project shape" table (release/signing flow,
+platform SDK versions, accessibility and privacy as product constraints). Do
+not create an `example-*` folder for a real codebase.
