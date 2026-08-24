@@ -11,8 +11,10 @@ They apply to every project unless a project file explicitly explains how the ru
 3. `workflow.md`
 4. `architecture.md`
 5. `coding-style.md`
-6. `security.md`
-7. `git-workflow.md`
+6. `dependencies.md`
+7. `testing.md`
+8. `security.md`
+9. `git-workflow.md`
 
 ## Mental model
 

@@ -149,6 +149,78 @@ In languages without formal interfaces, use types, schemas, modules or documente
 
 Add an interface for a real boundary, alternative implementation, external dependency or meaningful testing seam. Do not create a one-to-one interface around every class as ceremony.
 
+## REST API contracts and controller interfaces
+
+Every externally exposed REST controller or cohesive endpoint group must have a separately readable and documented API contract. A consumer or developer should be able to understand what the API promises without reading the controller implementation.
+
+The contract must define the relevant parts of:
+
+- HTTP method, route, content type and version
+- path, query, header and body inputs
+- request and response DTOs or schemas
+- validation constraints and required fields
+- success responses, status codes and error contracts
+- authentication and authorization expectations
+- idempotency, pagination, concurrency or deprecation behaviour when relevant
+- semantic documentation for the operation, parameters, return value and important failure cases
+
+The contract is the authoritative public boundary. The controller implements or binds to it and remains responsible only for transport handling and orchestration. Business logic still belongs in services or use cases.
+
+Do not maintain the same route definition and documentation independently in several places. Select one source of truth and generate or reference other representations from it where possible. Generated OpenAPI documents must agree with the runtime endpoints.
+
+### Java and Spring
+
+For Java frameworks that support annotated interfaces, each cohesive REST controller must implement a dedicated API interface unless a documented framework or project constraint makes that mechanism unsuitable:
+
+```text
+CustomerApi
+  Declares mappings, method signatures, DTOs and JavaDoc/OpenAPI metadata
+
+CustomerController implements CustomerApi
+  Implements the operations and delegates to services/use cases
+```
+
+- Keep endpoint signatures and public documentation on the API interface.
+- Put mapping annotations on the interface when the selected framework version and configuration support that as the contract source.
+- Use `@Override` in the controller implementation.
+- Do not duplicate mapping annotations or JavaDoc in the controller merely to keep both files looking complete.
+- Verify interface annotation discovery, proxy behaviour and generated OpenAPI against the actual Spring version; do not assume inheritance behaviour from memory.
+
+### C# and .NET
+
+Each controller or endpoint group must conform to an explicit API contract.
+
+- Use a dedicated interface when it is meaningfully enforced or consumed by the project's framework, tooling or architecture.
+- Document public members with XML documentation and use inheritance mechanisms such as `<inheritdoc/>` when the interface is the documentation source.
+- When an `I...Controller` interface would be ignored by runtime routing or documentation tooling, use an authoritative OpenAPI contract, typed request/response models and endpoint metadata instead.
+- Validate that generated OpenAPI includes the documented operations, parameters, responses and error contracts.
+
+Do not create a C# interface solely to imitate Java if it adds no enforceable contract. The separate, verifiable HTTP contract is mandatory; the mechanism is framework-specific.
+
+### Other languages and frameworks
+
+Use the closest enforceable equivalent:
+
+- typed route or endpoint contract modules
+- OpenAPI or another project-approved interface definition
+- request/response schemas and documented protocols
+- generated server stubs or client contracts when they are the selected source of truth
+
+A comment near an implementation method, an example request in an old README or generated documentation that is not checked for drift is not a sufficient API contract.
+
+## Contract changes
+
+Treat a changed route, input, response, status, error shape or authorization requirement as a public contract change.
+
+Before merging such a change:
+
+1. identify affected consumers
+2. assess backward compatibility and versioning
+3. update the authoritative contract and implementation together
+4. add or update contract and integration tests
+5. regenerate and inspect API documentation or clients when applicable
+6. document migration and deprecation when consumers cannot change atomically
+
 ## Repositories and database access
 
 ```text
@@ -235,6 +307,7 @@ Which controller or handler starts the flow?
 Which service or use case owns the rule?
 Which model or DTO describes the data?
 Which interface defines the boundary?
+Which REST/API contract defines the public endpoint?
 Which repository or client loads or stores data?
 Are mapping, validation or database connector changes required?
 Which layers need isolated and integrated tests?

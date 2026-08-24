@@ -7,11 +7,71 @@
 - Follow DRY and give shared semantics one natural home.
 - Use names that describe role and domain intent.
 - Preserve established formatting and idioms when they do not violate documented architecture or safety constraints.
-- Avoid new dependencies unless they clearly solve the problem.
+- Avoid new dependencies unless they clearly solve the problem. Follow `dependencies.md` for every addition, removal or version change.
 - Keep changes focused and easy to review.
 - Optimize for the next developer who must understand and debug the code without knowing its history.
 
 Detailed layer responsibilities are defined in `architecture.md`.
+
+## Braces and multiline delimiters
+
+The default brace style is **Allman style**: an opening curly brace belongs on its own line at the same indentation level as its matching closing brace.
+
+Prefer:
+
+```text
+private class Something
+{
+    void Execute()
+    {
+        // Code comes here.
+    }
+}
+```
+
+Avoid:
+
+```text
+private class Something {
+    void Execute() {
+        // Code comes here.
+    }
+}
+```
+
+Apply the same vertical readability principle to multiline parameter, argument, collection and array lists. When a construct has several entries or no longer reads clearly on one line:
+
+- place the opening delimiter on its own line when the language and formatter permit it
+- use one parameter, argument or element per line
+- place the matching closing delimiter on its own line
+- align the opening and closing delimiters at the same indentation level
+- include a trailing comma when the language and project formatter use it to keep diffs focused
+
+```text
+CreateSomething
+(
+    firstArgument,
+    secondArgument
+);
+
+items =
+[
+    firstItem,
+    secondItem,
+];
+```
+
+Short declarations, calls and collections with zero or one simple entry may remain on one line when that is clearer.
+
+Readability has priority over saving a single line. Do not compress structural delimiters merely to reduce vertical file length.
+
+### Formatter and existing-code exceptions
+
+- Follow an enforced project formatter when it cannot represent this style, for example Prettier, `gofmt`, `rustfmt` or another canonical formatter.
+- Record a lasting project-specific style deviation in the project instructions or formatter configuration.
+- Do not create noisy whole-file formatting changes as part of a focused feature or defect fix.
+- In an existing file with another consistent style, avoid mixing styles inside the same file. Handle a deliberate style migration separately.
+- Never disable formatter, lint or CI checks merely to force the global preference.
 
 ## Classes, components and modules
 
@@ -89,6 +149,7 @@ Avoid over-generalization. Do not build a framework for one case or force unrela
 ## Java and C#
 
 - Keep controllers thin.
+- Give REST controllers a separate, documented and verifiable API contract as defined in `architecture.md`.
 - Put business logic in services/use cases.
 - Keep persistence in repositories/data access.
 - Place interfaces at meaningful boundaries.
@@ -150,15 +211,9 @@ A hook also needs one responsibility. Moving a god component into one god hook d
 - Use absolute positioning only when the design genuinely requires it.
 - Keep generated document/PDF layouts deterministic.
 
-## Testing by layer
+## Testing
 
-| Layer | Focus |
-| --- | --- |
-| Domain/services | rules, edge cases and failure behaviour |
-| Repositories/data | queries, mapping and persistence integration |
-| Controllers/API | contracts, validation, status codes and authorization |
-| Views/components | rendering and user interaction |
-| Integrations | transport mapping, failures, retry and fallback |
+Follow `testing.md`. Test observable behaviour and realistic contracts at the appropriate levels instead of mirroring implementation details.
 
 A refactoring that splits a god object should preserve behaviour with existing tests and targeted tests around the newly created boundaries.
 
