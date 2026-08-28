@@ -165,6 +165,12 @@ single OkHttpClient/URLSession, centralized endpoints, result types,
 coroutine/dispatcher usage, async race guards, localization, and SDK version
 preservation.
 
+## Mixed reality (C#/UWP/HoloLens)
+
+See `mixed-reality.md` for holographic pipeline rules, spatial coordinate system
+guidance, UWP build constraints, SharpDX version pinning, and performance
+considerations for HoloLens and other UWP mixed-reality platforms.
+
 ## JavaScript and React
 
 - Prefer functional components when consistent with the project.

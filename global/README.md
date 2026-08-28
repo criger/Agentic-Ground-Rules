@@ -14,8 +14,9 @@ They apply to every project unless a project file explicitly explains how the ru
 6. `security.md`
 7. `dependencies.md`
 8. `native-mobile.md`
-9. `git-workflow.md`
-10. `testing.md`
+9. `mixed-reality.md`
+10. `git-workflow.md`
+11. `testing.md`
 
 ## Mental model
 

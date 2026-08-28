@@ -19,6 +19,9 @@ Use configuration names and examples without real values.
 See `native-mobile.md` for release/signing considerations for native mobile
 apps (Android keystores, iOS provisioning profiles, App Store credentials).
 
+See `mixed-reality.md` for UWP app manifest capabilities, Store submission
+credentials and device-target constraints.
+
 ## User and business data
 
 - Minimize access to personal, financial and confidential data.
