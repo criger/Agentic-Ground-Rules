@@ -257,6 +257,12 @@ Hooks are not a new dumping ground. A very large controller hook may need separa
 See `native-mobile.md` for architecture vocabulary, mobile-specific rules, and
 release/signing considerations for Android (Jetpack Compose) and iOS (SwiftUI).
 
+## Mixed reality (HoloLens and UWP)
+
+See `mixed-reality.md` for architecture vocabulary, holographic pipeline rules,
+spatial coordinate system guidance, UWP build constraints and performance
+considerations for HoloLens and other UWP mixed-reality platforms.
+
 ## Large classes and god objects
 
 Treat size as an architectural signal when:
